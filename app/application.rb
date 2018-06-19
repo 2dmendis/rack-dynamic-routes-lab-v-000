@@ -10,6 +10,7 @@ class Application
       item_name = req.path.split("/items/").last
       result = is_match?(item_name)
       if result == "Item was not found"
+        resp.write result
         resp.status = 400
       else 
         resp.write result
