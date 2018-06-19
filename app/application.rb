@@ -8,25 +8,26 @@ class Application
     
     if req.path.match(/items/)
       item_name = req.path.split("/items/").last
-      is_match?
-      if  @@items.find{|s| s.name == item_name}
-        name = @@items.find{|s| s.name == item_name}
-        resp.write name.price
-      else 
-        resp.write "Item was not found"
-        resp.status = 400
-      end 
+      resp.write is_match?(item_name)
+      
     else 
-      resp.write "Route not found"
-      resp.status = 404
+      resp.write is_not_match?
+      
     end 
   end 
   
-  def is_match?
-    
+  def is_match?(item_name)
+    if  @@items.find{|s| s.name == item_name}
+        name = @@items.find{|s| s.name == item_name}
+        return name.price
+      else 
+        return "Item was not found"
+        resp.status = 400
+      end 
   end 
   
   def is_not_match?
-    
+    return "Route not found"
+      resp.status = 404
   end 
 end 
