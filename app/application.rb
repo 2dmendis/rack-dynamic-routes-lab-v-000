@@ -12,7 +12,7 @@ class Application
       
     else 
       resp.write is_not_match?
-      
+      resp.status = 404
     end
     resp.finish
   end 
@@ -29,6 +29,6 @@ class Application
   
   def is_not_match?
     return "Route not found"
-      resp.status = 404
+      #resp.status = 404
   end 
 end 
