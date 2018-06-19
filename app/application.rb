@@ -8,7 +8,12 @@ class Application
     
     if req.path.match(/items/)
       item_name = req.path.split("/items/").last
-      resp.write is_match?(item_name)
+      result = is_match?(item_name)
+      if result == "Item was not found"
+        resp.status = 400
+      else 
+        resp.write result
+      end 
       
     else 
       resp.write is_not_match?
