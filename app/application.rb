@@ -8,6 +8,7 @@ class Application
     
     if req.path.match(/items/)
       item_name = req.path.split("/items/").last
+      is_match?
       if  @@items.find{|s| s.name == item_name}
         name = @@items.find{|s| s.name == item_name}
         resp.write name.price
@@ -22,4 +23,10 @@ class Application
   end 
   
   def is_match?
+    
+  end 
+  
+  def is_not_match?
+    
+  end 
 end 
