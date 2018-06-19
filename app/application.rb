@@ -9,7 +9,7 @@ class Application
     if req.path.match(/items/)
       item_name = req.path.split("/items/").last
       result = is_match?(item_name)
-      if result == "Item was not found"
+      if result == "Item not found"
         resp.write result
         resp.status = 400
       else 
@@ -28,7 +28,7 @@ class Application
         name = @@items.find{|s| s.name == item_name}
         return name.price
       else 
-        return "Item was not found"
+        return "Item not found"
         resp.status = 400
       end 
   end 
