@@ -13,7 +13,8 @@ class Application
     else 
       resp.write is_not_match?
       
-    end 
+    end
+    resp.finish
   end 
   
   def is_match?(item_name)
